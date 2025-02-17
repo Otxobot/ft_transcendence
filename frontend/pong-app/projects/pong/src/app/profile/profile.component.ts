@@ -7,6 +7,8 @@ import { AuthService } from '../auth/auth.service';
 import { FormsModule } from '@angular/forms';
 import { WebSocketService } from '../services/websocket.service';
 import { Subscription } from 'rxjs';
+import { MatchHistoryComponent } from '../match-history/match-history.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface User {
   id: number;
@@ -16,9 +18,9 @@ interface User {
   last_name: string;
   avatar?: string;
   is_online?: boolean;
-  games_played?: number;
-  games_won?: number;
-  games_lost?: number;
+  games_played: number;
+  games_won: number;
+  games_lost: number;
 }
 
 interface FriendRequest {
@@ -43,13 +45,24 @@ interface Friend {
 
 interface UserResponse {
   message: string;
-  user: User;
+  user: {
+    id: number;
+    username: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    avatar?: string;
+    is_online?: boolean;
+    games_played: number;
+    games_won: number;
+    games_lost: number;
+  };
 }
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatchHistoryComponent, TranslateModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -103,6 +116,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
 
     // Subscribe to user status updates
+    this.subscriptionStatus();
+  }
+
+  ngOnDestroy() {
+    if (this.userStatusSubscription) {
+      this.userStatusSubscription.unsubscribe();
+    }
+  }
+
+
+  subscriptionStatus():void
+  {
     this.userStatusSubscription = this.webSocketService.userStatus$.subscribe(status => {
       if (status.status === 'online') {
         this.onlineUsers.add(status.user_id);
@@ -112,17 +137,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.friends = [...this.friends];
     });
   }
-
-  ngOnDestroy() {
-    if (this.userStatusSubscription) {
-      this.userStatusSubscription.unsubscribe();
-    }
-  }
-
   loadUserProfile(username: string) {
     this.isLoading = true;
     this.error = null;
 
+    
     this.authService.getCurrentUser().subscribe({
       next: (currentUser) => {
         this.isOwnProfile = currentUser.username === username;
@@ -136,11 +155,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 this.userAvatar = 'assets/default-avatar.png';
               }
               this.isUserOnline = response.user.is_online ?? false;
+              
+              // Update the stats with actual values from the backend
               this.userStats = {
-                games_played: response.user.games_played ?? 0,
-                games_won: response.user.games_won ?? 0,
-                games_lost: response.user.games_lost ?? 0
+                games_played: response.user.games_played || 0,
+                games_won: response.user.games_won || 0,
+                games_lost: response.user.games_lost || 0
               };
+              
               this.loadFriends(response.user.username);
               this.isLoading = false;
             }
@@ -157,6 +179,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       }
     });
+    setTimeout(() => this.subscriptionStatus(), 2000);
   }
 
   showUpdateProfile() {
@@ -303,5 +326,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   isUserOnline_f(userId: number): boolean {
     return this.webSocketService.isUserOnline(userId);
+  }
+
+  GoToMatchHistory() {
+    this.router.navigate(['/match-history', this.currentUsername]);
   }
 }
