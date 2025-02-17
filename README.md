@@ -6,11 +6,11 @@
 
 ## 🚀 Features
 - 🎮 **Multiplayer Pong Game**: Real-time gameplay with matchmaking and spectating options.
-- 🏆 **Tournaments**: Create and join tournaments with live leaderboards.
+- 🏆 **Tournaments**: Create and join tournaments.
 - 👥 **User Management**: 
   - User profiles with customizable settings.
   - Add/remove friends via a friend request workflow.
-  - View match history and rankings.
+  - View match history.
 - 💬 **Live Chat**: Real-time messaging between users.
 - 📊 **Monitoring**: Integrated Prometheus and Grafana for system metrics.
 
@@ -25,5 +25,3 @@
 - **Real-Time**: WebSocket or similar technologies for live gameplay and chat.
 
 ---
-
-## 📂 Project Structure
