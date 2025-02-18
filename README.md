@@ -25,3 +25,42 @@
 - **Real-Time**: WebSocket or similar technologies for live gameplay and chat.
 
 ---
+## Project Layout
+.
+├── backend
+│   ├── accounts
+│   ├── django_debug.log
+│   ├── Dockerfile
+│   ├── env_example
+│   ├── live_chat
+│   ├── manage.py
+│   ├── media
+│   ├── memo
+│   ├── myproject
+│   ├── requirements.txt
+│   ├── run.sh
+│   ├── static
+│   ├── templates
+│   └── two_factor_auth
+├── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   └── pong-app
+├── grafana
+│   ├── alert.rules.yml
+│   ├── config.yml
+│   ├── dashboards
+│   └── provisioning
+├── Makefile
+├── nginx
+│   ├── Dockerfile
+│   └── nginx.conf
+├── prometheus
+│   └── alert.rules.yml
+├── README.md
+├── remote_pong
+│   └── game_manager.py
+├── TODO
+└── tree.txt
+
