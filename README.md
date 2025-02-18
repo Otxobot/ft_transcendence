@@ -29,40 +29,40 @@
 ```
 .
 ├── backend
-│   ├── accounts
-│   ├── django_debug.log
-│   ├── Dockerfile
-│   ├── env_example
-│   ├── live_chat
-│   ├── manage.py
-│   ├── media
-│   ├── memo
-│   ├── myproject
-│   ├── requirements.txt
-│   ├── run.sh
-│   ├── static
-│   ├── templates
-│   └── two_factor_auth
-├── docker-compose.yml
+│   ├── accounts                # User management app
+│   ├── django_debug.log         # Debug log file
+│   ├── Dockerfile               # Dockerfile for backend container
+│   ├── env_example              # Example environment variables file
+│   ├── live_chat                # Live chat app
+│   ├── manage.py                # Django management script
+│   ├── media                    # Uploaded media files
+│   ├── memo                     # Additional backend scripts or notes
+│   ├── myproject                # Main Django project folder
+│   ├── requirements.txt         # Backend Python dependencies
+│   ├── run.sh                   # Script to run backend services
+│   ├── static                   # Static files for the project
+│   ├── templates                # HTML templates
+│   └── two_factor_auth          # Two-factor authentication module
+├── docker-compose.yml           # Docker Compose configuration
 ├── frontend
-│   ├── Dockerfile
-│   ├── entrypoint.sh
-│   └── pong-app
+│   ├── Dockerfile               # Dockerfile for frontend container
+│   ├── entrypoint.sh            # Entrypoint script for the frontend
+│   └── pong-app                 # Frontend application files
 ├── grafana
-│   ├── alert.rules.yml
-│   ├── config.yml
-│   ├── dashboards
-│   └── provisioning
-├── Makefile
+│   ├── alert.rules.yml          # Alerting rules for Grafana
+│   ├── config.yml               # Grafana configuration file
+│   ├── dashboards               # Predefined Grafana dashboards
+│   └── provisioning             # Provisioning setup for Grafana
+├── Makefile                     # Build automation script
 ├── nginx
-│   ├── Dockerfile
-│   └── nginx.conf
+│   ├── Dockerfile               # Dockerfile for Nginx container
+│   └── nginx.conf               # Nginx configuration
 ├── prometheus
-│   └── alert.rules.yml
-├── README.md
+│   └── alert.rules.yml          # Alerting rules for Prometheus
+├── README.md                    # Project documentation (this file)
 ├── remote_pong
-│   └── game_manager.py
-├── TODO
-└── tree.txt
+│   └── game_manager.py          # Remote Pong game manager script
+├── TODO                         # List of tasks to complete
+└── tree.txt                     # Output of the `tree` command
 ```
 
