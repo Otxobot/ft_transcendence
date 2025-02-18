@@ -5,7 +5,7 @@
 ---
 
 ## 🚀 Features
-- 🎮 **Multiplayer Pong Game**: Real-time gameplay with matchmaking and spectating options.
+- 🎮 **Multiplayer Pong Game**: 4 and 2 player pong game.
 - 🏆 **Tournaments**: Create and join tournaments.
 - 👥 **User Management**: 
   - User profiles with customizable settings.
@@ -22,7 +22,7 @@
 - **Database**: PostgreSQL  
 - **DevOps**: Docker for containerization  
 - **Monitoring**: Prometheus and Grafana  
-- **Real-Time**: WebSocket or similar technologies for live gameplay and chat.
+- **Real-Time**: WebSocket technologies for live chat.
 
 ---
 ## Project Layout
