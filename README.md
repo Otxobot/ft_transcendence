@@ -26,6 +26,7 @@
 
 ---
 ## Project Layout
+```
 .
 ├── backend
 │   ├── accounts
@@ -63,4 +64,5 @@
 │   └── game_manager.py
 ├── TODO
 └── tree.txt
+```
 
